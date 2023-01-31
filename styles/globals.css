@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: 'Inter';
+  src: url('Inter.ttf');
+}
+
+html {
+  background: #F6F6F6;
+}
+
+h1 {
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 3rem;
+}
+
+h3 {
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+p {
+  font-family: 'Inter';
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+.aksen {
+  color: #A91F24;
+}
+
+
+.sv_progress-buttons__list .sv_progress-buttons__page-title {
+  white-space: break-spaces !important;
+}
+
+.sv-page .sv-row__question:first-child:last-child {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sv_qstn .sv-q-column-2,
+.sv-question .sv-q-column-2 {
+  max-width: 100% !important;
+
+}
+
+.sv-selectbase__column {
+  min-width: auto !important;
+}
+
+/* PERTANYAAN */
+/* margin pertanyaan */
+.sv-row:not(:last-child) {
+  padding-bottom: 6px !important;
+}
+
+.sv-title {
+  font-family: var(--inter-font) !important;
+  font-weight: 300 !important;
+}
+
+.sv-page__title {
+  padding-left: 0.55rem !important;
+  margin-bottom: 2.5rem !important;
+  font-weight: bolder;
+  font-size: 3rem !important;
+}
+
+.sv-page__description {
+  font-size: 1.125rem !important;
+  font-family: var(--inter-font) !important;
+  font-weight: bold;
+  color: #253C5B !important;
+
+}
+
+.sv-question__header--location--top {
+  max-width: none;
+}
+
+@media (max-width: 1366px) {
+
+  .sv-question__header--location--top {
+    max-width: 65rem;
+  }
+
+}
+
+@media (max-width: 1280px) {
+
+  .sv-question__header--location--top {
+    max-width: 36rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .sv-question__header--location--top {
+    max-width: 35rem;
+  }
+
+}
+
+.sv-question__title {
+  color: #253C5B;
+}
+
+.sv-item__decorator {
+  border: none !important;
+}
+
+/* margin pilihan */
+.sv-question__header--location--top {
+  margin-bottom: 0 !important;
+}
+
+.sv-page__title+.sv-page__description {
+  margin-top: -2em !important;
+  margin-bottom: 1em;
+}
+
+/* filled answer, question indicator bg */
+.sv-root-modern .sv-question__title--answer {
+  background-color: transparent !important;
+}
+
+.sv-root-modern .sv-dropdown {
+  min-width: 200px;
+}
+
+.sv-root-modern .sv-boolean__switch {
+  background-color: #EF9A29 !important;
+}
+
+.sv-boolean input:focus~.sv-boolean__switch {
+  outline: 1px solid #EF9A29 !important;
+}
+
+/* survey question focus form */
+.sv-root-modern .sv-text:focus {
+  border-color: #EF9A29;
+}
+
+/* tombol back and next */
+.sv-btn.sv-action-bar-item,
+.sv-btn {
+  border-radius: 8px !important;
+}
+
+.sv-root-modern .sv-btn--navigation {
+  background-color: #A91F24 !important;
+}
