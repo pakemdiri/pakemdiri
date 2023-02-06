@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <div className="relative flex content-center justify-center md:h-[calc(100vh-94px-112px)]">
-        <div className="container pt-10 xl:px-48 max-w-8xl relative mx-auto">
+        <div className="container pt-10 2xl:pt-44 xl:px-48 max-w-8xl relative mx-auto">
           <div className="items-center flex flex-wrap mx-auto">
             <div className="w-50 lg:w-6/12 mx-auto text-[#283A5B] px-4">
               <h1 className='pb-3 md:pb-5 text-4xl md:text-5xl font-semibold'>Selamat Datang<br></br>
