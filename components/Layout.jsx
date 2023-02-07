@@ -32,7 +32,7 @@ export default function Layout({ children, meta: pageMeta }) {
           name="description"
         />
         {/* <meta property="og:url" content={`https://subscription-starter.vercel.app${router.asPath}`} /> */}
-        <meta property="og:url" content="https://pakemdiri.vercel.app" />
+        <meta property="og:url" content="https://pakemdiri.safenet.or.id/" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="SAFEnet" />
         <meta
@@ -45,7 +45,7 @@ export default function Layout({ children, meta: pageMeta }) {
         />
         <meta
           property="og:image"
-          content="https://pakemdiri.vercel.app/pakemdiri.png"
+          content="https://pakemdiri.safenet.or.id/pakemdiri.png"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@Safenet" />
@@ -59,7 +59,7 @@ export default function Layout({ children, meta: pageMeta }) {
         />
         <meta
           name="twitter:image"
-          content="https://pakemdiri.vercel.app/pakemdiri.png"
+          content="https://pakemdiri.safenet.or.id/pakemdiri.png"
         />
       </Head>
       <main className='"flex flex-col min-h-screen'>
