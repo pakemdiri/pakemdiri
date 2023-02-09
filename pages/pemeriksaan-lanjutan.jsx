@@ -23,7 +23,7 @@ export default function Pakemdiri() {
 
   if (typeof window !== "undefined") {
     // browser code
-    const completedSurvey = window.localStorage.getItem(surveyItemKey) || null;
+    const completedSurvey = window.sessionStorage.getItem(surveyItemKey) || null;
     if (completedSurvey) {
       const data = JSON.parse(completedSurvey);
       useEffect(() => setFilledSurvey(data), []);
@@ -41,7 +41,7 @@ export default function Pakemdiri() {
   }
 
   function lihatNilai(e) {
-    const getCurrentSurvey = window.localStorage.getItem("score");
+    const getCurrentSurvey = window.sessionStorage.getItem("score");
     const currentSurvey = JSON.parse(getCurrentSurvey);
 
     let correctAnswer = currentSurvey

@@ -25,9 +25,9 @@ const dataComponent = () => {
   const [surveyResults, setSurveyResults] = useState("");
   const [isSurveyCompleted, setIsSurveyCompleted] = useState(false);
 
-  // get score item from localstorage to get completed survey
+  // get score item from sessionStorage to get completed survey
   const scoreItem = "score";
-  const stateScore = window.localStorage.getItem(scoreItem);
+  const stateScore = window.sessionStorage.getItem(scoreItem);
   const currentSurvey = JSON.parse(stateScore);
 
   survey.onComplete.add((survey) => {
