@@ -71,35 +71,36 @@ const HasilComponent = () => {
   }
 
   function deleteSurveyState() {
-    // localStorage.removeItem("score");
-    // localStorage.removeItem("completed-survey");
-    // router.push("rekomendasi");
+    localStorage.removeItem("score");
+    localStorage.removeItem("completed-survey");
+    localStorage.removeItem("my-survey");
+    router.push("rekomendasi");
 
-    const scoreItem = "score";
-    const stateScore = window.localStorage.getItem(scoreItem);
-    const currentSurvey = JSON.parse(stateScore);
-    console.log("Cure survey:")
-    console.log(currentSurvey)
-    let data_csv = {
-      email: "asd@asd.asd",
-      // perangkat: currentSurvey.titleperangkat,
-      identitas: "",
-      currentSurvey,
-    };
+    // const scoreItem = "score";
+    // const stateScore = window.localStorage.getItem(scoreItem);
+    // const currentSurvey = JSON.parse(stateScore);
+    // console.log("Cure survey:")
+    // console.log(currentSurvey)
+    // let data_csv = {
+    //   email: "asd@asd.asd",
+    //   // perangkat: currentSurvey.titleperangkat,
+    //   identitas: "",
+    //   currentSurvey,
+    // };
 
-    fetch("/api/sendmail", {
-      method: "POST",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data_csv),
-    }).then((res) => {
-      console.log("Response received");
-      if (res.status === 200) {
-        console.log("Response succeeded!");
-      }
-    });
+    // fetch("/api/sendmail", {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json, text/plain, */*",
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data_csv),
+    // }).then((res) => {
+    //   console.log("Response received");
+    //   if (res.status === 200) {
+    //     console.log("Response succeeded!");
+    //   }
+    // });
   }
 
   function handleClick() {
@@ -110,8 +111,8 @@ const HasilComponent = () => {
     <SurveyComponent />
   ) : (
     <>
-      <div className="relative flex content-center justify-center md:h-[calc(100vh-94px-112px)] text-[#253C5B]">
-        <div className="container pt-10 xl:px-48 max-w-8xl relative mx-auto">
+      <div className="flex content-center justify-center text-[#253C5B]">
+        <div className="container pt-10 2xl:pt-44 xl:px-48 max-w-8xl relative mx-auto">
           <div className="items-center flex flex-wrap mx-auto flex-col">
             <div className="mb-4 px-4">
               <h1 className="text-4xl md:text-5xl font-bold mb-3 ">
