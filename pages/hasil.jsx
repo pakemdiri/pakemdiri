@@ -111,8 +111,8 @@ const HasilComponent = () => {
     <SurveyComponent />
   ) : (
     <>
-      <div className="relative flex content-center justify-center lg:h-screen text-[#253C5B]">
-        <div className="container pt-10 xl:px-48 max-w-8xl relative mx-auto">
+      <div className="flex content-center justify-center text-[#253C5B]">
+        <div className="container pt-10 2xl:pt-44 xl:px-48 max-w-8xl relative mx-auto">
           <div className="items-center flex flex-wrap mx-auto flex-col">
             <div className="mb-4 px-4">
               <h1 className="text-4xl md:text-5xl font-bold mb-3 ">

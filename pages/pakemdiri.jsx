@@ -28,7 +28,7 @@ return mulai && kategori == "perangkat"
 ?
 <SurveyComponent survey={"ponsel"} />
 : (
-<div className="relative flex content-center  justify-center md:h-screen">
+<div className="relative flex content-center  justify-center">
   <div className="container pt-10 2xl:pt-44  xl:px-48 max-w-8xl relative mx-auto">
     <div className="items-center flex flex-wrap">
       <div className="w-full px-4 ml-auto mr-auto text-[#283A5B]">

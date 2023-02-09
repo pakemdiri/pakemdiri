@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Rekomendasi() {
   return (
     <>
-      <div className="relative flex content-center justify-center lg:h-screen">
+      <div className="relative flex content-center justify-center">
         <div className="container px-4 mx-auto">
           <div className="pt-10 2xl:pt-44 lg:-mx-6 justify-center flex flex-col-reverse lg:flex-row lg:items-center">
             <div className="py-5  flex flex-col md:w-1/4">

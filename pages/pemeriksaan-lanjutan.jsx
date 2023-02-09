@@ -74,7 +74,7 @@ export default function Pakemdiri() {
   ) : mulai && kategori == "ponsel" ? (
     <SurveyComponent survey={"ponsel"} />
   ) : (
-    <div className="relative flex content-center  justify-center md:h-[calc(100vh-94px-112px)]">
+    <div className="relative flex content-center  justify-center ">
       <div className="container pt-10 xl:px-48 max-w-8xl relative mx-auto pt-auto">
         <div className="items-center flex flex-wrap">
           <div className="w-full px-4 mx-auto my-auto text-[#283A5B] text-center">
