@@ -71,13 +71,13 @@ const HasilComponent = () => {
   }
 
   function deleteSurveyState() {
-    localStorage.removeItem("score");
-    localStorage.removeItem("completed-survey");
-    localStorage.removeItem("my-survey");
+    sessionStorage.removeItem("score");
+    sessionStorage.removeItem("completed-survey");
+    sessionStorage.removeItem("my-survey");
     router.push("rekomendasi");
 
     // const scoreItem = "score";
-    // const stateScore = window.localStorage.getItem(scoreItem);
+    // const stateScore = window.sessionStorage.getItem(scoreItem);
     // const currentSurvey = JSON.parse(stateScore);
     // console.log("Cure survey:")
     // console.log(currentSurvey)

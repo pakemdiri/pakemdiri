@@ -62,7 +62,7 @@ const SurveyComponent = (props) => {
   function saveSurveyData(survey) {
     const data = survey.data;
     data.pageNo = survey.currentPageNo;
-    window.localStorage.setItem(storageItemKey, JSON.stringify(data));
+    window.sessionStorage.setItem(storageItemKey, JSON.stringify(data));
   }
 
   // Save survey results
@@ -74,7 +74,7 @@ const SurveyComponent = (props) => {
   });
 
   // Restore survey results
-  const prevData = window.localStorage.getItem(storageItemKey) || null;
+  const prevData = window.sessionStorage.getItem(storageItemKey) || null;
   if (prevData) {
     const data = JSON.parse(prevData);
     survey.data = data;
@@ -92,15 +92,15 @@ const SurveyComponent = (props) => {
 
 
   // pemeriksaan lanjutan
-  // save completed survey to localstorage
+  // save completed survey to sessionStorage
   const surveyItemKey = "completed-survey";
   function saveCompletedSurvey(data) {
-    const surveyState = window.localStorage.getItem(surveyItemKey);
+    const surveyState = window.sessionStorage.getItem(surveyItemKey);
 
     if (surveyState === null) {
-      window.localStorage.setItem(surveyItemKey, JSON.stringify([data]));
+      window.sessionStorage.setItem(surveyItemKey, JSON.stringify([data]));
     } else {
-      const getCurrentSurvey = window.localStorage.getItem(surveyItemKey);
+      const getCurrentSurvey = window.sessionStorage.getItem(surveyItemKey);
       const currentSurvey = JSON.parse(getCurrentSurvey);
 
       if (Object.values(currentSurvey).includes(data)) {
@@ -108,7 +108,7 @@ const SurveyComponent = (props) => {
       } else {
         currentSurvey.push(data);
 
-        window.localStorage.setItem(
+        window.sessionStorage.setItem(
           surveyItemKey,
           JSON.stringify(currentSurvey)
         );
@@ -118,7 +118,7 @@ const SurveyComponent = (props) => {
 
   const scoreItem = "score";
   function saveScore(title, correct, question) {
-    const stateScore = window.localStorage.getItem(scoreItem);
+    const stateScore = window.sessionStorage.getItem(scoreItem);
 
     let items = [];
     let item = {
@@ -129,9 +129,9 @@ const SurveyComponent = (props) => {
 
     items.push(item);
     if (stateScore === null) {
-      window.localStorage.setItem(scoreItem, JSON.stringify(items));
+      window.sessionStorage.setItem(scoreItem, JSON.stringify(items));
     } else {
-      const getCurrentSurvey = window.localStorage.getItem(scoreItem);
+      const getCurrentSurvey = window.sessionStorage.getItem(scoreItem);
       const currentSurvey = JSON.parse(getCurrentSurvey);
 
       const isFound = currentSurvey.some((element, index) => {
@@ -149,7 +149,7 @@ const SurveyComponent = (props) => {
       if (!isFound) {
         currentSurvey.push(item);
 
-        window.localStorage.setItem(scoreItem, JSON.stringify(currentSurvey));
+        window.sessionStorage.setItem(scoreItem, JSON.stringify(currentSurvey));
       }
     }
   }
