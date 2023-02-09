@@ -3,9 +3,9 @@ import Image from "next/image";
 export default function Rekomendasi() {
   return (
     <>
-      <div className="relative flex content-center justify-center lg:h-[calc(100vh-94px-112px)]">
+      <div className="relative flex content-center justify-center lg:h-screen">
         <div className="container px-4 mx-auto">
-          <div className="pt-10 lg:-mx-6 justify-center flex flex-col-reverse lg:flex-row lg:items-center">
+          <div className="pt-10 2xl:pt-44 lg:-mx-6 justify-center flex flex-col-reverse lg:flex-row lg:items-center">
             <div className="py-5  flex flex-col md:w-1/4">
               <div className="relative object-cover w-full rounded-xl h-72 lg:h-96 max-w-[300px] max-h-[450px] self-center border-[1.5rem] lg:border-[2rem] border-[#A91F24]">
                 <Image

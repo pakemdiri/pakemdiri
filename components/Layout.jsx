@@ -61,6 +61,9 @@ export default function Layout({ children, meta: pageMeta }) {
           name="twitter:image"
           content="https://pakemdiri.safenet.or.id/pakemdiri.png"
         />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter"/>
+
       </Head>
       <main className='"flex flex-col min-h-screen'>
         <Header />
