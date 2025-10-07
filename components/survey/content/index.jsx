@@ -1,9 +1,9 @@
 export const perangkat = {
-  "title": "perangkat",
+  "title": "Keamanan Perangkat",
   "logoPosition": "right",
   "pages": [
     {
-      "name": "page1",
+      "name": "perangkat",
       "title": "**Pemeriksaan Keamanan <span class='aksen'>Perangkat</span>**",
       "description": "Periksalah pengaturan keamanan pada perangkat laptop dan ponsel yang Anda gunakan sehari-hari.",
       "elements": [
@@ -11,24 +11,6 @@ export const perangkat = {
           "type": "radiogroup",
           "name": "Memisahkan laptop untuk bekerja dan pribadi",
           "title": "Memisahkan laptop untuk bekerja dan pribadi",
-          "correctAnswer": "1",
-          "isRequired": true,
-          "choices": [
-            {
-              "value": "1",
-              "text": "Ya"
-            },
-            {
-              "value": "0",
-              "text": "Tidak"
-            }
-          ],
-          "colCount": 2
-        },
-        {
-          "type": "radiogroup",
-          "name": "Memisahkan ponsel untuk bekerja dan pribadi",
-          "title": "Memisahkan ponsel untuk bekerja dan pribadi",
           "correctAnswer": "1",
           "isRequired": true,
           "choices": [
@@ -63,8 +45,26 @@ export const perangkat = {
         },
         {
           "type": "radiogroup",
-          "name": "Menggunakan kata sandi untuk membuka perangkat",
-          "title": "Menggunakan kata sandi untuk membuka perangkat",
+          "name": "Menggunakan program atau aplikasi orisinal, bukan bajakan",
+          "title": "Menggunakan program atau aplikasi orisinal, bukan bajakan",
+          "correctAnswer": "1",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "1",
+              "text": "Ya"
+            },
+            {
+              "value": "0",
+              "text": "Tidak"
+            }
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Mengunci layar (kata sandi, PIN, atau biometrik) untuk membuka perangkat",
+          "title": "Mengunci layar (kata sandi, PIN, atau biometrik) untuk membuka perangkat",
           "correctAnswer": "1",
           "isRequired": true,
           "choices": [
@@ -99,7 +99,7 @@ export const perangkat = {
         },
         {
           "type": "radiogroup",
-          "name": "question4",
+          "name": "Melakukan enkripsi media penyimpan",
           "title": "Melakukan enkripsi media penyimpan",
           "correctAnswer": "1",
           "isRequired": true,
@@ -135,24 +135,6 @@ export const perangkat = {
         },
         {
           "type": "radiogroup",
-          "name": "Mematikan fungsi lokasi pada ponsel kecuali diperlukan",
-          "title": "Mematikan fungsi lokasi pada ponsel kecuali diperlukan",
-          "correctAnswer": "1",
-          "isRequired": true,
-          "choices": [
-            {
-              "value": "1",
-              "text": "Ya"
-            },
-            {
-              "value": "0",
-              "text": "Tidak"
-            }
-          ],
-          "colCount": 2
-        },
-        {
-          "type": "radiogroup",
           "name": "Melakukan pencadangan (back up) secara berkala, setidaknya sebulan sekali",
           "title": "Melakukan pencadangan (back up) secara berkala, setidaknya sebulan sekali",
           "correctAnswer": "1",
@@ -171,7 +153,7 @@ export const perangkat = {
         },
         {
           "type": "radiogroup",
-          "name": "question8",
+          "name": "Membersihkan berkas dan aplikasi yang sudah tidak digunakan secara berkala",
           "title": "Membersihkan berkas dan aplikasi yang sudah tidak digunakan secara berkala",
           "correctAnswer": "1",
           "isRequired": true,
@@ -222,110 +204,27 @@ export const perangkat = {
             }
           ],
           "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Menghapus riwayat penggunaan Wi-Fi secara rutin",
+          "title": "Menghapus riwayat penggunaan Wi-Fi secara rutin",
+          "correctAnswer": "1",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "1",
+              "text": "Ya"
+            },
+            {
+              "value": "0",
+              "text": "Tidak"
+            }
+          ],
+          "colCount": 2
         }
       ]
     },
-    // {
-    //   "name": "page5",
-    //   "elements": [
-    //    {
-    //     "type": "boolean",
-    //     "name": "consent",
-    //     "title": "Apakah anda mau berbagi hasil dari tes ini"
-    //    },
-    //    {
-    //     "type": "panel",
-    //     "name": "panel1",
-    //     "elements": [
-    //       {
-    //         "type": "text",
-    //         "name": "email",
-    //         "title": "Please enter your e-mail",
-    //         "isRequired": false,
-    //         "validators": [
-    //           {
-    //             "type": "email"
-    //           }
-    //         ]
-    //       },
-    //      {
-    //       "type": "text",
-    //       "name": "Inisial",
-    //       "title": "Inisial Nama"
-    //      },
-    //      {
-    //       "type": "dropdown",
-    //       "name": "Domisili",
-    //       "title": "Provinsi",
-    //       "choices": [
-    //        "ACEH",
-    //        "SUMATERA UTARA",
-    //        "SUMATERA BARAT",
-    //        "RIAU",
-    //        "JAMBI",
-    //        "SUMATERA SELATAN",
-    //        "BENGKULU",
-    //        "LAMPUNG",
-    //        "KEPULAUAN BANGKA BELITUNG",
-    //        "KEPULAUAN RIAU",
-    //        "DKI JAKARTA",
-    //        "JAWA BARAT",
-    //        "JAWA TENGAH",
-    //        "DI YOGYAKARTA",
-    //        "JAWA TIMUR",
-    //        "BANTEN",
-    //        "BALI",
-    //        "NUSA TENGGARA BARAT",
-    //        "NUSA TENGGARA TIMUR",
-    //        "KALIMANTAN BARAT",
-    //        "KALIMANTAN TENGAH",
-    //        "KALIMANTAN SELATAN",
-    //        "KALIMANTAN TIMUR",
-    //        "KALIMANTAN UTARA",
-    //        "SULAWESI UTARA",
-    //        "SULAWESI TENGAH",
-    //        "SULAWESI SELATAN",
-    //        "SULAWESI TENGGARA",
-    //        "GORONTALO",
-    //        "SULAWESI BARAT",
-    //        "MALUKU",
-    //        "MALUKU UTARA",
-    //        "PAPUA BARAT",
-    //        "PAPUA",
-    //       ]
-    //      },
-    //      {
-    //       "type": "radiogroup",
-    //       "name": "Gender",
-    //       "title": "Jenis Kelamin",
-    //     "colCount": 3,
-
-    //       "choices": [
-    //        "Laki-laki",
-    //        "Perempuan",
-    //        "Translaki",
-    //        "Transpuan"
-    //       ],
-    //       "hasOther": true
-    //      },
-    //      {
-    //       "type": "radiogroup",
-    //       "name": "Umur",
-    //       "title": "Umur",
-    //     "colCount": 2,
-    //       "choices": [
-    //        "18-25",
-    //        "26-35",
-    //        "36-45",
-    //        "46-59",
-    //        "60+"
-    //       ]
-    //      }
-    //     ],
-    //     "visibleIf": "{consent} = true"
-    //    }
-    //   ]
-    //  }
   ],
   // showProgressBar: "top",
   showTitle: false,
@@ -342,7 +241,8 @@ export const perangkat = {
 };
 
 export const komunikasi = {
-  "title": "komunikasi",
+  "name": "komunikasi",
+  "title": "Keamanan Komunikasi",
   "logoPosition": "right",
   "pages": [
     {
@@ -352,8 +252,8 @@ export const komunikasi = {
       "elements": [
         {
           "type": "radiogroup",
-          "name": "Komunikasi sehari-hari menggunakan platform aman",
-          "title": "Komunikasi sehari-hari menggunakan platform aman",
+          "name": "Menggunakan koneksi pribadi, misalnya tethering dari ponsel sendiri atau Wi-Fi kantor/rumah, pada saat berinternet",
+          "title": "Menggunakan koneksi pribadi, misalnya tethering dari ponsel sendiri atau Wi-Fi kantor/rumah, pada saat berinternet",
           "correctAnswer": "1",
           "isRequired": true,
           "choices": [
@@ -370,8 +270,8 @@ export const komunikasi = {
         },
         {
           "type": "radiogroup",
-          "name": "Komunikasi sensitif menggunakan platform aman",
-          "title": "Komunikasi sensitif menggunakan platform aman",
+          "name": "Menggunakan VPN ketika mengakses Wi-Fi publik",
+          "title": "Menggunakan VPN ketika mengakses Wi-Fi publik",
           "correctAnswer": "1",
           "isRequired": true,
           "choices": [
@@ -388,8 +288,8 @@ export const komunikasi = {
         },
         {
           "type": "radiogroup",
-          "name": "Surel aman untuk berkomunikasi tentang hal-hal sensitif",
-          "title": "Surel aman untuk berkomunikasi tentang hal-hal sensitif",
+          "name": "Menghindari penggunaan informasi sensitif dan personal ketika menggunakan Wi-Fi publik",
+          "title": "Menghindari penggunaan informasi sensitif dan personal ketika menggunakan Wi-Fi publik",
           "correctAnswer": "1",
           "isRequired": true,
           "choices": [
@@ -406,8 +306,8 @@ export const komunikasi = {
         },
         {
           "type": "radiogroup",
-          "name": "Pada saat beraktivitas daring (online) menggunakan koneksi privat yang aman",
-          "title": "Pada saat beraktivitas daring (online) menggunakan koneksi privat yang aman",
+          "name": "Menggunakan peramban aman, seperti Brave atau Firefox, untuk mengurangi jejak digital saat berselancar",
+          "title": "Menggunakan peramban aman, seperti Brave atau Firefox, untuk mengurangi jejak digital saat berselancar",
           "correctAnswer": "1",
           "isRequired": true,
           "choices": [
@@ -424,8 +324,8 @@ export const komunikasi = {
         },
         {
           "type": "radiogroup",
-          "name": "Menghindari penggunaan informasi sensitif dan personal ketika menggunakan Wifi publik",
-          "title": "Menghindari penggunaan informasi sensitif dan personal ketika menggunakan Wifi publik",
+          "name": "Menghapus riwayat data dan kukis di peramban secara berkala",
+          "title": "Menghapus riwayat data dan kukis di peramban secara berkala",
           "correctAnswer": "1",
           "isRequired": true,
           "choices": [
@@ -442,8 +342,8 @@ export const komunikasi = {
         },
         {
           "type": "radiogroup",
-          "name": "Menggunakan VPN ketika mengakses Wifi publik",
-          "title": "Menggunakan VPN ketika mengakses Wifi publik",
+          "name": "Menggunakan aplikasi pesan terenkripsi, misalnya Signal atau Wire, sebagai grup resmi pekerjaan",
+          "title": "Menggunakan aplikasi pesan terenkripsi, misalnya Signal atau Wire, sebagai grup resmi pekerjaan",
           "correctAnswer": "1",
           "isRequired": true,
           "choices": [
@@ -460,44 +360,8 @@ export const komunikasi = {
         },
         {
           "type": "radiogroup",
-          "name": "Menggunakan peramban aman dalam metode Private atau Incognito untuk mengurangi jejak digital saat berselancar",
-          "title": "Menggunakan peramban aman dalam metode Private atau Incognito untuk mengurangi jejak digital saat berselancar",
-          "correctAnswer": "1",
-          "isRequired": true,
-          "choices": [
-            {
-              "value": "1",
-              "text": "Ya"
-            },
-            {
-              "value": "0",
-              "text": "Tidak"
-            }
-          ],
-          "colCount": 2
-        },
-        {
-          "type": "radiogroup",
-          "name": "Menambah add-ons atau plugin seperti Privacy Badger dan HTTPS Everywhere pada peramban",
-          "title": "Menambah add-ons atau plugin seperti Privacy Badger dan HTTPS Everywhere pada peramban",
-          "correctAnswer": "1",
-          "isRequired": true,
-          "choices": [
-            {
-              "value": "1",
-              "text": "Ya"
-            },
-            {
-              "value": "0",
-              "text": "Tidak"
-            }
-          ],
-          "colCount": 2
-        },
-        {
-          "type": "radiogroup",
-          "name": "Menggunakan Jitsi, BigBlueBotton atau layanan lain yang terenkripsi untuk video call",
-          "title": "Menggunakan Jitsi, BigBlueBotton atau layanan lain yang terenkripsi untuk video call",
+          "name": "Menggunakan surel terenkripsi untuk berkomunikasi tentang hal-hal sensitif",
+          "title": "Menggunakan surel terenkripsi untuk berkomunikasi tentang hal-hal sensitif",
           "correctAnswer": "1",
           "isRequired": true,
           "choices": [
@@ -532,6 +396,42 @@ export const komunikasi = {
         },
         {
           "type": "radiogroup",
+          "name": "Menggunakan layanan terenkripsi, seperti BigBlueBotton dan Jitsi, untuk panggilan video",
+          "title": "Menggunakan layanan terenkripsi, seperti BigBlueBotton dan Jitsi, untuk panggilan video",
+          "correctAnswer": "1",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "1",
+              "text": "Ya"
+            },
+            {
+              "value": "0",
+              "text": "Tidak"
+            }
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Menggunakan layanan cloud terenkripsi dan bisa dikunci, seperti Proton Dive dan Mega, untuk berbagi berkas",
+          "title": "Menggunakan layanan cloud terenkripsi dan bisa dikunci, seperti Proton Dive dan Mega, untuk berbagi berkas",
+          "correctAnswer": "1",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "1",
+              "text": "Ya"
+            },
+            {
+              "value": "0",
+              "text": "Tidak"
+            }
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
           "name": "Mewaspadai dan berhati-hati terhadap surel atau pranala dari pengirim yang tidak dikenal",
           "title": "Mewaspadai dan berhati-hati terhadap surel atau pranala dari pengirim yang tidak dikenal",
           "correctAnswer": "1",
@@ -550,8 +450,8 @@ export const komunikasi = {
         },
         {
           "type": "radiogroup",
-          "name": "Memeriksa keamanan pranala atau berkas di email dengan database malware (virustotal dan urlscan.io)",
-          "title": "Memeriksa keamanan pranala atau berkas di email dengan database malware (virustotal dan urlscan.io)",
+          "name": "Memeriksa keamanan pranala atau berkas di database malware seperti virustotal dan urlscan.io",
+          "title": "Memeriksa keamanan pranala atau berkas di database malware seperti virustotal dan urlscan.io",
           "correctAnswer": "1",
           "isRequired": true,
           "choices": [
@@ -583,7 +483,7 @@ export const komunikasi = {
 
 
 export const akun = {
-  title: "akun",
+  title: "Keamanan Akun",
   "logoPosition": "right",
   "pages": [
     {
@@ -665,8 +565,8 @@ export const akun = {
         },
         {
          "type": "radiogroup",
-         "name": "Mencatat password di aplikasi pengelola password seperti KeePass",
-         "title": "Mencatat password di aplikasi pengelola password seperti KeePass",
+         "name": "Mencatat password di aplikasi pengelola password seperti KeePass atau Bitwarden",
+         "title": "Mencatat password di aplikasi pengelola password seperti KeePass atau Bitwardenass",
          "correctAnswer": "1",
          "isRequired": true,
          "choices": [
@@ -683,8 +583,8 @@ export const akun = {
         },
         {
          "type": "radiogroup",
-         "name": "Mengganti password secara berkala setidaknya enam bulan sekali",
-         "title": "Mengganti password secara berkala setidaknya enam bulan sekali",
+         "name": "Mengganti password secara berkala setidaknya enam bulan sekali, atau ketika mengalami insiden/serangan digital",
+         "title": "Mengganti password secara berkala setidaknya enam bulan sekali, atau ketika mengalami insiden/serangan digital",
          "correctAnswer": "1",
          "isRequired": true,
          "choices": [
@@ -719,107 +619,6 @@ export const akun = {
         }
        ]
     },
-    // {
-    //   "name": "page5",
-    //   "elements": [
-    //     {
-    //       "type": "boolean",
-    //       "name": "consent",
-    //       "title": "Apakah anda mau berbagi hasil dari tes ini"
-    //     },
-    //     {
-    //       "type": "panel",
-    //       "name": "panel1",
-    //       "elements": [
-    //         {
-    //           "type": "text",
-    //           "name": "email",
-    //           "title": "Please enter your e-mail",
-    //           "isRequired": false,
-    //           "validators": [
-    //             {
-    //               "type": "email"
-    //             }
-    //           ]
-    //         },
-    //         {
-    //           "type": "text",
-    //           "name": "Inisial",
-    //           "title": "Inisial Nama"
-    //         },
-    //         {
-    //           "type": "dropdown",
-    //           "name": "Domisili",
-    //           "title": "Provinsi",
-    //           "choices": [
-    //             "ACEH",
-    //             "SUMATERA UTARA",
-    //             "SUMATERA BARAT",
-    //             "RIAU",
-    //             "JAMBI",
-    //             "SUMATERA SELATAN",
-    //             "BENGKULU",
-    //             "LAMPUNG",
-    //             "KEPULAUAN BANGKA BELITUNG",
-    //             "KEPULAUAN RIAU",
-    //             "DKI JAKARTA",
-    //             "JAWA BARAT",
-    //             "JAWA TENGAH",
-    //             "DI YOGYAKARTA",
-    //             "JAWA TIMUR",
-    //             "BANTEN",
-    //             "BALI",
-    //             "NUSA TENGGARA BARAT",
-    //             "NUSA TENGGARA TIMUR",
-    //             "KALIMANTAN BARAT",
-    //             "KALIMANTAN TENGAH",
-    //             "KALIMANTAN SELATAN",
-    //             "KALIMANTAN TIMUR",
-    //             "KALIMANTAN UTARA",
-    //             "SULAWESI UTARA",
-    //             "SULAWESI TENGAH",
-    //             "SULAWESI SELATAN",
-    //             "SULAWESI TENGGARA",
-    //             "GORONTALO",
-    //             "SULAWESI BARAT",
-    //             "MALUKU",
-    //             "MALUKU UTARA",
-    //             "PAPUA BARAT",
-    //             "PAPUA",
-    //           ]
-    //         },
-    //         {
-    //           "type": "radiogroup",
-    //           "name": "Gender",
-    //           "title": "Jenis Kelamin",
-    //           "colCount": 3,
-
-    //           "choices": [
-    //             "Laki-laki",
-    //             "Perempuan",
-    //             "Translaki",
-    //             "Transpuan"
-    //           ],
-    //           "hasOther": true
-    //         },
-    //         {
-    //           "type": "radiogroup",
-    //           "name": "Umur",
-    //           "title": "Umur",
-    //           "colCount": 2,
-    //           "choices": [
-    //             "18-25",
-    //             "26-35",
-    //             "36-45",
-    //             "46-59",
-    //             "60+"
-    //           ]
-    //         }
-    //       ],
-    //       "visibleIf": "{consent} = true"
-    //     }
-    //   ]
-    // }
   ],
   // showProgressBar: "top",
   showTitle: false,
@@ -836,7 +635,7 @@ export const akun = {
 };
 
 export const ponsel = {
-  "title": "ponsel",
+  "title": "Keamanan Ponsel",
   "logoPosition": "right",
   "pages": [
     {
@@ -845,9 +644,27 @@ export const ponsel = {
       "description": "Periksalah pengaturan keamanan pada perangkat laptop dan ponsel yang Anda gunakan sehari-hari.",
       "elements": [
         {
+          "type": "radiogroup",
+          "name": "Memisahkan ponsel untuk bekerja atau hal sensitif dengan ponsel untuk keperluan pribadi",
+          "title": "Memisahkan ponsel untuk bekerja atau hal sensitif dengan ponsel untuk keperluan pribadi",
+          "correctAnswer": "1",
+          "isRequired": true,
+          "choices": [
+           {
+            "value": "1",
+            "text": "Ya"
+           },
+           {
+            "value": "0",
+            "text": "Tidak"
+           }
+          ],
+          "colCount": 2
+         },
+        {
          "type": "radiogroup",
-         "name": "Melindungi fisik ponsel dengan pelindung luar (casing) dan atau pelindung layar (screen guard)",
-         "title": "Melindungi fisik ponsel dengan pelindung luar (casing) dan atau pelindung layar (screen guard)",
+         "name": "Melindungi ponsel secara fisik yaitu dengan menggunakan pelindung luar (casing) dan atau pelindung layar (screen guard)",
+         "title": "Melindungi ponsel secara fisik yaitu dengan menggunakan pelindung luar (casing) dan atau pelindung layar (screen guard)",
          "correctAnswer": "1",
          "isRequired": true,
          "choices": [
@@ -864,8 +681,8 @@ export const ponsel = {
         },
         {
          "type": "radiogroup",
-         "name": "Melindungi ponsel dengan password atau pola agar tidak mudah diakses orang lain",
-         "title": "Melindungi ponsel dengan password atau pola agar tidak mudah diakses orang lain",
+         "name": "Melindungi ponsel dengan kunci (password, PIN, pola, atau biometrik) agar tidak mudah diakses orang lain",
+         "title": "Melindungi ponsel dengan kunci (password, PIN, pola, atau biometrik) agar tidak mudah diakses orang lain",
          "correctAnswer": "1",
          "isRequired": true,
          "choices": [
@@ -881,27 +698,27 @@ export const ponsel = {
          "colCount": 2
         },
         {
-         "type": "radiogroup",
-         "name": "Memperbarui sistem operasi (OS) jika tersedia",
-         "title": "Memperbarui sistem operasi (OS) jika tersedia",
-         "correctAnswer": "1",
-         "isRequired": true,
-         "choices": [
-          {
-           "value": "1",
-           "text": "Ya"
-          },
-          {
-           "value": "0",
-           "text": "Tidak"
-          }
-         ],
-         "colCount": 2
-        },
+          "type": "radiogroup",
+          "name": "Mengaktifkan penguncian otomatis jika tidak digunakan dalam waktu tertentu, misalnya 1 menit atau 5 menit",
+          "title": "Mengaktifkan penguncian otomatis jika tidak digunakan dalam waktu tertentu, misalnya 1 menit atau 5 menit",
+          "correctAnswer": "1",
+          "isRequired": true,
+          "choices": [
+           {
+            "value": "1",
+            "text": "Ya"
+           },
+           {
+            "value": "0",
+            "text": "Tidak"
+           }
+          ],
+          "colCount": 2
+         },
         {
          "type": "radiogroup",
-         "name": "Memperbarui aplikasi jika tersedia di OS",
-         "title": "Memperbarui aplikasi jika tersedia di OS",
+         "name": "Memperbarui sistem operasi (OS) dan aplikasi jika tersedia",
+         "title": "Memperbarui sistem operasi (OS) dan aplikasi jika tersedia",
          "correctAnswer": "1",
          "isRequired": true,
          "choices": [
@@ -936,8 +753,8 @@ export const ponsel = {
         },
         {
          "type": "radiogroup",
-         "name": "Menonaktifkan Bluetooth dan Wifi jika tidak sedang digunakan",
-         "title": "Menonaktifkan Bluetooth dan Wifi jika tidak sedang digunakan",
+         "name": "Menonaktifkan Bluetooth dan Wi-Fi jika tidak sedang digunakan",
+         "title": "Menonaktifkan Bluetooth dan Wi-Fi jika tidak sedang digunakan",
          "correctAnswer": "1",
          "isRequired": true,
          "choices": [
@@ -972,8 +789,8 @@ export const ponsel = {
         },
         {
          "type": "radiogroup",
-         "name": "Mengaktifkan lokasi pada ponsel hanya jika digunakan",
-         "title": "Mengaktifkan lokasi pada ponsel hanya jika digunakan",
+         "name": "Menonaktifkan lokasi pada ponsel kecuali jika digunakan",
+         "title": "Menonaktifkan lokasi pada ponsel kecuali jika digunakan",
          "correctAnswer": "1",
          "isRequired": true,
          "choices": [
@@ -1008,8 +825,8 @@ export const ponsel = {
         },
         {
          "type": "radiogroup",
-         "name": "Memeriksa sejauh mana akses oleh setiap aplikasi terhadap data yang ada dalam ponsel",
-         "title": "Memeriksa sejauh mana akses oleh setiap aplikasi terhadap data yang ada dalam ponsel",
+         "name": "Memeriksa sejauh mana akses setiap aplikasi terhadap data di ponsel",
+         "title": "Memeriksa sejauh mana akses setiap aplikasi terhadap data di ponsel",
          "correctAnswer": "1",
          "isRequired": true,
          "choices": [
@@ -1026,8 +843,8 @@ export const ponsel = {
         },
         {
          "type": "radiogroup",
-         "name": "Memeriksa apa saja perangkat lain yang digunakan untuk aplikasi pesan ringkas di ponsel",
-         "title": "Memeriksa apa saja perangkat lain yang digunakan untuk aplikasi pesan ringkas di ponsel",
+         "name": "Memeriksa apa saja perangkat lain (misalnya laptop) yang terhubung untuk aplikasi pesan ringkas di ponsel, seperti WhatsApp, Telegram dan Wire",
+         "title": "Memeriksa apa saja perangkat lain (misalnya laptop) yang terhubung untuk aplikasi pesan ringkas di ponsel, seperti WhatsApp, Telegram dan Wire",
          "correctAnswer": "1",
          "isRequired": true,
          "choices": [
@@ -1044,26 +861,8 @@ export const ponsel = {
         },
         {
           "type": "radiogroup",
-          "name": "Menggunakan peramban yang tidak merekam aktivitas penggunanya",
-          "title": "Menggunakan peramban yang tidak merekam aktivitas penggunanya",
-          "correctAnswer": "1",
-          "isRequired": true,
-          "choices": [
-           {
-            "value": "1",
-            "text": "Ya"
-           },
-           {
-            "value": "0",
-            "text": "Tidak"
-           }
-          ],
-          "colCount": 2
-         },
-         {
-          "type": "radiogroup",
-          "name": "Menggunakan VPN jika mengakses Wifi publik",
-          "title": "Menggunakan VPN jika mengakses Wifi publik",
+          "name": "Menggunakan peramban yang tidak merekam aktivitas penggunanya, seperti Firefox Focus, Brave, dan Duckduckgo",
+          "title": "Menggunakan peramban yang tidak merekam aktivitas penggunanya, seperti Firefox Focus, Brave, dan Duckduckgo",
           "correctAnswer": "1",
           "isRequired": true,
           "choices": [
@@ -1116,8 +915,8 @@ export const ponsel = {
         },
         {
          "type": "radiogroup",
-         "name": "Memasang aplikasi mesin pencari yang aman, seperti DuckDuckGo",
-         "title": "Memasang aplikasi mesin pencari yang aman, seperti DuckDuckGo",
+         "name": "Memasang aplikasi mesin pencari yang aman, seperti Brave Search dan DuckDuckGo",
+         "title": "Memasang aplikasi mesin pencari yang aman, seperti Brave Search dan DuckDuckGo",
          "correctAnswer": "1",
          "isRequired": true,
          "choices": [
@@ -1152,8 +951,8 @@ export const ponsel = {
         },
         {
          "type": "radiogroup",
-         "name": "Memeriksa atau menghapus aplikasi dan berkas yang sudah tidak digunakan di ponsel.",
-         "title": "Memeriksa atau menghapus aplikasi dan berkas yang sudah tidak digunakan di ponsel.",
+         "name": "Memeriksa secara berkala aplikasi dan berkas apa saja yang sudah tidak digunakan dan menghapusnya jika tidak diperlukan",
+         "title": "Memeriksa secara berkala aplikasi dan berkas apa saja yang sudah tidak digunakan dan menghapusnya jika tidak diperlukan",
          "correctAnswer": "1",
          "isRequired": true,
          "choices": [

@@ -31,9 +31,20 @@ const SvgComponent = (props) => (
 const HasilComponent = () => {
   const router = useRouter();
   const data = router.query;
-
+  const [scoreData, setScoreData] = React.useState([]);
   const [checked, setChecked] = React.useState(false);
   const [mulai, setMulai] = React.useState(false);
+
+  React.useEffect(() => {
+    const savedScoreData = sessionStorage.getItem("score");
+    if (savedScoreData) {
+      setScoreData(JSON.parse(savedScoreData));
+    }
+  }, []);
+
+  const totalScore = Math.round(
+    scoreData.reduce((accumulator, currentItem) => accumulator + currentItem.correct, 0)
+  );
 
   const handleChange = () => {
     setChecked(!checked);
@@ -48,6 +59,7 @@ const HasilComponent = () => {
   }
 
   // change "." to "," of rounded survey score
+  console.log(data);
   let score = Math.round(data.score * 10) / 10;
   let nilai = numberWithCommas(score);
 
@@ -76,6 +88,8 @@ const HasilComponent = () => {
     sessionStorage.removeItem("my-survey");
     router.push("rekomendasi");
 
+
+    
     // const scoreItem = "score";
     // const stateScore = window.sessionStorage.getItem(scoreItem);
     // const currentSurvey = JSON.parse(stateScore);
@@ -123,21 +137,36 @@ const HasilComponent = () => {
               Tingkat kerentanan
             </h3>
             <div className=" w-full grid grid-flow-row sm:grid-flow-row grid-cols-2 sm:grid-cols-5 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-gray-100 gap-x-0 gap-y-2 justify-items-center z-10 text-center">
-              <button className="group relative h-12 w-24 overflow-hidden rounded-lg bg-[#F2848C]  text-lg ">
-                <span className="relative">1-20</span>
-              </button>
-              <button className="group relative h-12 w-24 overflow-hidden rounded-lg bg-[#F2A19D] text-lg ">
-                <span className="relative">21-40</span>
-              </button>
-              <button className="group relative h-12 w-24 overflow-hidden rounded-lg bg-[#F2C8AD]  text-lg ">
-                <span className="relative ">41-60</span>
-              </button>
-              <button className="group relative h-12 w-24 overflow-hidden rounded-lg bg-[#D1E1B7]  text-lg ">
-                <span className="relative  ">61-80</span>
-              </button>
-              <button className="group relative h-12 w-24 overflow-hidden rounded-lg bg-[#9FDAC4] text-lg ">
-                <span className="relative  ">81-100</span>
-              </button>
+              <div>
+                <div className="justify-self-center content-center relative h-12 w-24 overflow-hidden rounded-lg bg-[#F2848C]  text-lg ">
+                  <span className="relative">1-20</span>
+                </div>
+                <span className="relative">Tingkat risiko sangat tinggi</span>
+              </div>
+              <div>
+                <div className="justify-self-center content-center relative h-12 w-24 overflow-hidden rounded-lg bg-[#F2A19D] text-lg ">
+                  <span className="relative">21-40</span>
+                </div>
+                <span className="relative">Tingkat risiko tinggi</span>
+              </div>
+              <div>
+                <div className="justify-self-center content-center relative h-12 w-24 overflow-hidden rounded-lg bg-[#F2C8AD] text-lg ">
+                  <span className="relative">41-60</span>
+                </div>
+                <span className="relative">Tingkat risiko sedang</span>
+              </div>
+              <div>
+                <div className="justify-self-center content-center relative h-12 w-24 overflow-hidden rounded-lg  bg-[#D1E1B7] text-lg ">
+                  <span className="relative">61-80</span>
+                </div>
+                <span className="relative">Tingkat risiko rendah</span>
+              </div>
+              <div>
+                <div className="justify-self-center content-center relative h-12 w-24 overflow-hidden rounded-lg  bg-[#9FDAC4] text-lg ">
+                  <span className="relative">81-100</span>
+                </div>
+                <span className="relative">Tingkat risiko sangat rendah</span>
+              </div>
             </div>
             <div className="relative pt-10 md:pt-24 mx-auto">
               <div className="absolute inset-0 z-10 text-center flex flex-col items-center justify-center mt-10">
@@ -156,27 +185,41 @@ const HasilComponent = () => {
             >
               <span className="relative">{risiko}</span>
             </div>
+            {/* <div className="relative pt-5 md:pt-16 mx-auto">
+            <div 
+        style={{ 
+          padding: '16px', 
+          marginBottom: '20px', 
+          backgroundColor: '#eef5ff', 
+          border: '1px solid #a9c7e8', 
+          borderRadius: '8px' 
+        }}
+      >
+        <h3 style={{ marginTop: 0, marginBottom: '4px' }}>Total Skor Gabungan</h3>
+        <p style={{ fontSize: '1.8rem', fontWeight: 'bold', margin: 0, color: '#0d47a1' }}>
+          {Math.round((totalScore / 50) * 100)}
+        </p>
+      </div>
+            {scoreData.map((item) => (
+        <div 
+          key={item.title} 
+          style={{ 
+            border: '1px solid #ccc', 
+            borderRadius: '8px', 
+            padding: '16px', 
+            marginBottom: '10px' 
+          }}
+        >
+          <h2 style={{ marginTop: 0, textTransform: 'capitalize' }}>
+            {item.title}
+          </h2>
+          <p style={{ fontSize: '1.5rem', fontWeight: 'bold', margin: 0 }}>
+            Skor: {Math.round(item.score)}
+          </p>
+        </div>
+      ))}
+            </div> */}
             <div className="pb-8">
-              {/* <div className="flex justify-center">
-                <div>
-                  <div className="form-check">
-                    <input
-                      checked={checked}
-                      onChange={handleChange}
-                      className="form-check-input h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-red-600 checked:border-red-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="flexCheckDefault"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      for="flexCheckDefault"
-                    >
-                      Default checkbox
-                    </label>
-                  </div>
-                </div>
-              </div> */}
               <Link href="rekomendasi">
               <button
                 onClick={() => deleteSurveyState()}

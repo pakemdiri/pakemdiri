@@ -60,9 +60,32 @@ const SurveyComponent = (props) => {
   const storageItemKey = "my-survey";
 
   function saveSurveyData(survey) {
-    const data = survey.data;
-    data.pageNo = survey.currentPageNo;
-    window.sessionStorage.setItem(storageItemKey, JSON.stringify(data));
+    // Clone the data to avoid modifying the original
+    const currentData = { ...survey.data };
+    
+    // Get existing data from sessionStorage
+    const existingData = window.sessionStorage.getItem(storageItemKey);
+    let allAnswers = {};
+    
+    if (existingData) {
+      try {
+        allAnswers = JSON.parse(existingData);
+      } catch (error) {
+        console.error('Error parsing existing survey data:', error);
+      }
+    }
+    
+    // Create an object with survey title as key
+    const surveyData = {
+      title: survey.title,
+      data: currentData
+    };
+    
+    // If this survey already exists, update it, otherwise add it
+    allAnswers[survey.title] = surveyData;
+    
+    // Save back to sessionStorage
+    window.sessionStorage.setItem(storageItemKey, JSON.stringify(allAnswers));
   }
 
   // Save survey results
@@ -76,10 +99,11 @@ const SurveyComponent = (props) => {
   // Restore survey results
   const prevData = window.sessionStorage.getItem(storageItemKey) || null;
   if (prevData) {
-    const data = JSON.parse(prevData);
-    survey.data = data;
-    if (data.pageNo) {
-      survey.currentPageNo = data.pageNo;
+    const allData = JSON.parse(prevData);
+    // Get data for current survey if it exists
+    const surveyData = allData[survey.title];
+    if (surveyData && surveyData.data) {
+      survey.data = surveyData.data;
     }
   }
 
@@ -117,7 +141,7 @@ const SurveyComponent = (props) => {
   }
 
   const scoreItem = "score";
-  function saveScore(title, correct, question) {
+  function saveScore(title, correct, question, score) {
     const stateScore = window.sessionStorage.getItem(scoreItem);
 
     let items = [];
@@ -125,6 +149,7 @@ const SurveyComponent = (props) => {
       title,
       correct,
       question,
+      score
     };
 
     items.push(item);
@@ -160,10 +185,11 @@ const SurveyComponent = (props) => {
     var result = sender.data;
     result["correct_answers"] = sender.getCorrectedAnswerCount();
     result["no_of_questions"] = sender.getQuizQuestionCount();
-    saveScore(sender.title, result.correct_answers, result.no_of_questions);
-    //Post result into your database
     const score =
       (sender.getCorrectedAnswerCount() / sender.getQuizQuestionCount()) * 100;
+    saveScore(sender.title, result.correct_answers, result.no_of_questions, score);
+    //Post result into your database
+    
     router.push(
       {
         pathname: "/hasil",
@@ -189,7 +215,8 @@ const SurveyComponent = (props) => {
             }}
           >
             {" "}
-            {surveyResults}{" "}
+            {surveyResults
+            }{" "}
           </code>{" "}
         </>
       )}{" "} */}
