@@ -182,6 +182,7 @@ const HasilComponent = () => {
               className={
                 "mt-10 m-5 p-2 rounded-lg text-center " + "bg-[" + color + "]"
               }
+                
             >
               <span className="relative">{risiko}</span>
             </div> */}
