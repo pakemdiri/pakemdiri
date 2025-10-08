@@ -130,12 +130,12 @@ const HasilComponent = () => {
           <div className="items-center flex flex-wrap mx-auto flex-col">
             <div className="mb-4 px-4">
               <h1 className="text-4xl md:text-5xl font-bold mb-3 ">
-                <span className="aksen">Level</span> Keamanan Anda
+                Level <span className="aksen">Risiko</span> Anda
               </h1>
             </div>
-            <h3 className="px-4 mb-3 text-2xl font-semibold">
+            {/* <h3 className="px-4 mb-3 text-2xl font-semibold">
               Tingkat kerentanan
-            </h3>
+            </h3> */}
             <div className=" w-full grid grid-flow-row sm:grid-flow-row grid-cols-2 sm:grid-cols-5 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-gray-100 gap-x-0 gap-y-2 justify-items-center z-10 text-center">
               <div>
                 <div className="justify-self-center content-center relative h-12 w-24 overflow-hidden rounded-lg bg-[#F2848C]  text-lg ">
@@ -168,7 +168,7 @@ const HasilComponent = () => {
                 <span className="relative">Tingkat risiko sangat rendah</span>
               </div>
             </div>
-            <div className="relative pt-10 md:pt-24 mx-auto">
+            {/* <div className="relative pt-10 md:pt-24 mx-auto">
               <div className="absolute inset-0 z-10 text-center flex flex-col items-center justify-center mt-10">
                 <span className="text-4xl font-black">{nilai}%</span>
               </div>
@@ -184,8 +184,8 @@ const HasilComponent = () => {
               }
             >
               <span className="relative">{risiko}</span>
-            </div>
-            {/* <div className="relative pt-5 md:pt-16 mx-auto">
+            </div> */}
+             <div className="relative pt-5 md:pt-10 pb-5 mx-auto px-4 md:px-0">
             <div 
         style={{ 
           padding: '16px', 
@@ -200,6 +200,7 @@ const HasilComponent = () => {
           {Math.round((totalScore / 50) * 100)}
         </p>
       </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center', padding: '0 10px' }}>
             {scoreData.map((item) => (
         <div 
           key={item.title} 
@@ -207,10 +208,12 @@ const HasilComponent = () => {
             border: '1px solid #ccc', 
             borderRadius: '8px', 
             padding: '16px', 
-            marginBottom: '10px' 
+            flex: '1 1 200px',
+            minWidth: '200px',
+            maxWidth: '300px'
           }}
         >
-          <h2 style={{ marginTop: 0, textTransform: 'capitalize' }}>
+          <h2 style={{ marginTop: 0, textTransform: 'capitalize', fontSize: '1.1rem' }}>
             {item.title}
           </h2>
           <p style={{ fontSize: '1.5rem', fontWeight: 'bold', margin: 0 }}>
@@ -218,7 +221,8 @@ const HasilComponent = () => {
           </p>
         </div>
       ))}
-            </div> */}
+            </div>
+            </div>
             <div className="pb-8">
               <Link href="rekomendasi">
               <button
