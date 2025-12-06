@@ -37,7 +37,6 @@ return (<>
     <meta name="twitter:description"
       content="PAKEM DIRI adalah metode penilaian keamanan digital secara mandiri yang sedang dikembangkan SAFEnet untuk merespon maraknya serangan digital terhadap kelompok berisiko tinggi" />
     <meta name="twitter:image" content="https://pakemdiri.safenet.or.id/pakemdiri.png" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter" />
   </Head>
   <main className='"flex flex-col min-h-screen'>
     <Header /> {
