@@ -26,12 +26,7 @@ p {
   color: #A91F24;
 }
 
-/* ── SurveyJS v2 layout overrides ── */
-
-.sd-page .sd-row__question:first-child:last-child {
-  display: flex;
-  justify-content: space-between;
-}
+/* ── SurveyJS layout overrides ── */
 
 .sd-selectbase__column {
   min-width: auto !important;
@@ -48,7 +43,8 @@ p {
 }
 
 .sd-page__title {
-  padding-bottom: 2rem !important;
+  margin: 0 0 2.5rem !important;
+  padding: 0 0 0 .55rem !important;
   font-weight: bolder;
   font-size: 1.75rem !important;
   line-height: 1.1 !important;
@@ -61,11 +57,12 @@ p {
 }
 
 .sd-page__description {
+  min-height: 2.8em;
+  padding: 0 0 0 .55rem !important;
   font-size: 1.125rem !important;
   font-family: 'Inter', var(--sjs-font-family) !important;
   font-weight: bold;
   color: #253C5B !important;
-  padding-bottom: 2rem !important;
 }
 
 .sd-question__header {
@@ -93,6 +90,8 @@ p {
 
 .sd-question__title {
   color: #253C5B;
+  padding: .25em .44em !important;
+  font-size: 1.25em !important;
 }
 
 .sd-item__decorator {
@@ -130,4 +129,112 @@ p {
   --sd-action-boxshadow: 0 0 0 1px #A91F24 !important;
   --sd-action-hover-box-shadow: 0 0 0 1px #8A191D !important;
   border-radius: 8px !important;
+}
+
+/* Keep the current theme while restoring the previous survey rhythm. */
+.sd-progress-buttons__list .sd-progress-buttons__page-title {
+  white-space: break-spaces !important;
+}
+
+.sd-body {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  row-gap: 0 !important;
+}
+
+.sd-body > .sv-components-column {
+  row-gap: 0 !important;
+}
+
+.sd-body.sd-body--static {
+  max-width: none !important;
+}
+
+.sd-body .sd-body__timer,
+.sd-body .sd-body__page,
+.sd-body .sd-body__navigation {
+  width: 90%;
+  margin-top: 2em;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.sd-body__progress {
+  margin-bottom: 4.5em;
+}
+
+.sd-body__progress:not(:first-child) {
+  margin-top: 2.5em;
+}
+
+.sd-page {
+  padding: 0 !important;
+  row-gap: 0 !important;
+}
+
+.sd-page__header {
+  gap: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.sd-page__content {
+  padding: 0 !important;
+  row-gap: 0 !important;
+}
+
+.sd-question__header-and-content-container {
+  row-gap: 0 !important;
+}
+
+.sd-question__content {
+  margin-left: .55em;
+}
+
+.sd-page .sd-row__question:first-child:last-child > .sd-question__container > .sd-question__header-and-content-container {
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.sd-page .sd-row__question:first-child:last-child > .sd-question__container > .sd-question__header-and-content-container > .sd-question__header {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.sd-page .sd-row__question:first-child:last-child > .sd-question__container > .sd-question__header-and-content-container > .sd-question__content {
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.sd-body__navigation {
+  padding: 2.5em 0 .87em !important;
+}
+
+.sd-action-bar.sd-footer.sd-body__navigation {
+  justify-content: flex-end;
+  margin-bottom: 0 !important;
+}
+
+.sd-action-bar.sd-footer.sd-body__navigation .sd-action-bar__item,
+.sd-action-bar.sd-footer.sd-body__navigation .sd-action-bar__item-content {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+@media (max-width: 1000px) {
+  .sd-body .sd-body__timer,
+  .sd-body .sd-body__page,
+  .sd-body .sd-body__navigation {
+    width: calc(100% - 20px);
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sd-selectbase--mobile .sd-selectbase--multi-column {
+    flex-direction: row !important;
+  }
 }

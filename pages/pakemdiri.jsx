@@ -28,7 +28,7 @@ export default function Pakemdiri() {
                 ))}
               </p>
             </div>
-            <div className="w-full grid grid-cols-2 sm:grid-cols-4 py-9 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-gray-100 gap-x-0 bg-white-500 z-10 text-center">
+            <div className="w-full grid grid-cols-2 sm:grid-cols-4 py-4 sm:py-9 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-gray-100 gap-x-0 bg-white-500 z-10 text-center">
               {categories.map((category) => (
                 <Link
                   key={category.id}
