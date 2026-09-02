@@ -566,7 +566,7 @@ export const akun = {
         {
          "type": "radiogroup",
          "name": "Mencatat password di aplikasi pengelola password seperti KeePass atau Bitwarden",
-         "title": "Mencatat password di aplikasi pengelola password seperti KeePass atau Bitwardenass",
+         "title": "Mencatat password di aplikasi pengelola password seperti KeePass atau Bitwarden",
          "correctAnswer": "1",
          "isRequired": true,
          "choices": [

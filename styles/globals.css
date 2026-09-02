@@ -1,12 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* 
-@font-face {
-  font-family: 'Inter';
-  src: url('Inter.ttf');
-} */
+@import "tailwindcss";
 
 html {
   background: #F6F6F6;
@@ -34,125 +26,108 @@ p {
   color: #A91F24;
 }
 
+/* ── SurveyJS v2 layout overrides ── */
 
-.sv_progress-buttons__list .sv_progress-buttons__page-title {
-  white-space: break-spaces !important;
-}
-
-.sv-page .sv-row__question:first-child:last-child {
+.sd-page .sd-row__question:first-child:last-child {
   display: flex;
   justify-content: space-between;
 }
 
-.sv_qstn .sv-q-column-2,
-.sv-question .sv-q-column-2 {
-  max-width: 100% !important;
-
-}
-
-.sv-selectbase__column {
+.sd-selectbase__column {
   min-width: auto !important;
+  max-width: 100% !important;
 }
 
-/* PERTANYAAN */
-/* margin pertanyaan */
-.sv-row:not(:last-child) {
+.sd-row:not(:last-child) {
   padding-bottom: 6px !important;
 }
 
-.sv-title {
-  font-family: var(--inter-font) !important;
+.sd-title {
+  font-family: 'Inter', var(--sjs-font-family) !important;
   font-weight: 300 !important;
 }
 
-.sv-page__title {
-  padding-left: 0.55rem !important;
-  margin-bottom: 2.5rem !important;
+.sd-page__title {
+  padding-bottom: 2rem !important;
   font-weight: bolder;
-  font-size: 3rem !important;
+  font-size: 1.75rem !important;
+  line-height: 1.1 !important;
 }
 
-.sv-page__description {
+@media (min-width: 768px) {
+  .sd-page__title {
+    font-size: 3rem !important;
+  }
+}
+
+.sd-page__description {
   font-size: 1.125rem !important;
-  font-family: var(--inter-font) !important;
+  font-family: 'Inter', var(--sjs-font-family) !important;
   font-weight: bold;
   color: #253C5B !important;
-
+  padding-bottom: 2rem !important;
 }
 
-.sv-question__header--location--top {
+.sd-question__header {
   max-width: none;
+  margin-bottom: 0 !important;
 }
 
 @media (max-width: 1366px) {
-
-  .sv-question__header--location--top {
+  .sd-question__header {
     max-width: 65rem;
   }
-
 }
 
 @media (max-width: 1280px) {
-
-  .sv-question__header--location--top {
+  .sd-question__header {
     max-width: 36rem;
   }
 }
 
 @media (max-width: 768px) {
-
-  .sv-question__header--location--top {
+  .sd-question__header {
     max-width: 35rem;
   }
-
 }
 
-.sv-question__title {
+.sd-question__title {
   color: #253C5B;
 }
 
-.sv-item__decorator {
+.sd-item__decorator {
   border: none !important;
 }
 
-/* margin pilihan */
-.sv-question__header--location--top {
-  margin-bottom: 0 !important;
+.sd-radio__decorator {
+  box-shadow: inset 0 0 0 2px #A91F24 !important;
 }
 
-.sv-page__title+.sv-page__description {
+.sd-radio--checked .sd-radio__decorator {
+  background-color: #A91F24 !important;
+  box-shadow: inset 0 0 0 2px #A91F24 !important;
+}
+
+.sd-page__title + .sd-page__description {
   margin-top: -2em !important;
   margin-bottom: 1em;
 }
 
-/* filled answer, question indicator bg */
-.sv-root-modern .sv-question__title--answer {
+.sd-root-modern .sd-question--answered .sd-question__title {
   background-color: transparent !important;
 }
 
-.sv-root-modern .sv-dropdown {
-  min-width: 200px;
-}
-
-.sv-root-modern .sv-boolean__switch {
-  background-color: #EF9A29 !important;
-}
-
-.sv-boolean input:focus~.sv-boolean__switch {
-  outline: 1px solid #EF9A29 !important;
-}
-
-/* survey question focus form */
-.sv-root-modern .sv-text:focus {
-  border-color: #EF9A29;
-}
-
-/* tombol back and next */
-.sv-btn.sv-action-bar-item,
-.sv-btn {
+.sd-btn,
+.sd-btn.sv-action-bar-item {
   border-radius: 8px !important;
 }
 
-.sv-root-modern .sv-btn--navigation {
-  background-color: #A91F24 !important;
+.sd-navigation__complete-btn {
+  --sd-action-background: #A91F24 !important;
+  --sd-action-hover-background: #8A191D !important;
+  --sd-action-title-color: #FFFFFF !important;
+  --sd-action-hover-title-color: #FFFFFF !important;
+  --sd-action-boxshadow: 0 0 0 1px #A91F24 !important;
+  --sd-action-hover-box-shadow: 0 0 0 1px #8A191D !important;
+  border-radius: 8px !important;
 }

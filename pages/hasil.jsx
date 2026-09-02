@@ -1,259 +1,120 @@
+import { useState } from "react";
 import { useRouter } from "next/router";
-import * as React from "react";
 import Link from "next/link";
+import { getLocalizedCategories, STORAGE_KEYS } from "../lib/constants";
+import { getTranslations } from "../lib/i18n";
+import { useSessionStorageJSON } from "../lib/hooks";
 
-import dynamic from "next/dynamic";
+const RISK_RANGES = [
+  { range: "1-20", color: "#F2848C" },
+  { range: "21-40", color: "#F2A19D" },
+  { range: "41-60", color: "#F2C8AD" },
+  { range: "61-80", color: "#D1E1B7" },
+  { range: "81-100", color: "#9FDAC4" },
+];
 
-const SurveyComponent = dynamic(() => import("../components/survey/data"), {
-  ssr: false,
-});
-
-const SvgComponent = (props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    xmlSpace="preserve"
-    width={250}
-    height={250}
-    shapeRendering="geometricPrecision"
-    textRendering="geometricPrecision"
-    imageRendering="optimizeQuality"
-    fillRule="evenodd"
-    clipRule="evenodd"
-    viewBox="0 0 5820.92 7170.17"
-    {...props}
-  >
-    <g>
-      <path d="M4.91 1194.81c0 1029.71-67.17 1923.17 295.96 2890.9 213.75 569.65 453.04 1058.32 808.03 1529 214.54 284.45 390.49 520 668.91 765.18 57.16 50.35 75.27 52.39 132.79 106.23 197.74 185.04 793.9 684.05 1042.16 684.05 116.77 0 926.16-645.1 1095.59-816.52 172.51-174.53 301.96-303.25 463.17-492.88 39.02-45.9 63.94-84.77 102.7-136.31 47.07-62.57 62.68-73.6 106.85-132.17 75.9-100.63 132.68-198.56 202.29-302.28 467.08-695.97 897.56-1823.45 897.56-2979.79V1168.26c0-187.14-730.45-382.15-1020.48-493.27l-1468.15-550.2C2775.5-93.16 2891.1-10.42 2146.1 255.4c-263.82 94.13-497.98 183.39-756.21 279.51L287.08 945.85C147.51 994.99 4.91 1016.26 4.91 1194.83z" />
-    </g>
-  </svg>
-);
-
-const HasilComponent = () => {
+export default function HasilPage() {
   const router = useRouter();
-  const data = router.query;
-  const [scoreData, setScoreData] = React.useState([]);
-  const [checked, setChecked] = React.useState(false);
-  const [mulai, setMulai] = React.useState(false);
+  const locale = router.locale || "id";
+  const t = getTranslations(locale);
+  const categories = getLocalizedCategories(locale);
+  const scoreData = useSessionStorageJSON(STORAGE_KEYS.SCORE);
+  const [pdfLoading, setPdfLoading] = useState(false);
 
-  React.useEffect(() => {
-    const savedScoreData = sessionStorage.getItem("score");
-    if (savedScoreData) {
-      setScoreData(JSON.parse(savedScoreData));
+  const totalCorrect = scoreData.reduce((sum, item) => sum + item.correct, 0);
+  const totalQuestions = scoreData.reduce((sum, item) => sum + item.question, 0);
+  const combinedScore = totalQuestions > 0
+    ? Math.round((totalCorrect / totalQuestions) * 100)
+    : 0;
+
+  async function handleDownloadPdf() {
+    setPdfLoading(true);
+    try {
+      const { downloadPdf } = await import("../lib/generate-pdf");
+      await downloadPdf(locale);
+    } catch (err) {
+      console.error("PDF generation failed:", err);
+    } finally {
+      setPdfLoading(false);
     }
-  }, []);
-
-  const totalScore = Math.round(
-    scoreData.reduce((accumulator, currentItem) => accumulator + currentItem.correct, 0)
-  );
-
-  const handleChange = () => {
-    setChecked(!checked);
-  };
-
-  // If user reload page, the passed score prop removed which give bad UI look
-  if (data.score == null) data.score = 0;
-
-  //  change math round output of "." to ","
-  function numberWithCommas(x) {
-    return x.toString().replace(".", ",");
   }
 
-  // change "." to "," of rounded survey score
-  console.log(data);
-  let score = Math.round(data.score * 10) / 10;
-  let nilai = numberWithCommas(score);
-
-  let color, risiko;
-
-  if (score < 21) {
-    color = "#F2848C";
-    risiko = "Tingkat risiko sangat tinggi";
-  } else if (score < 41) {
-    color = "#F2A19D";
-    risiko = "Tingkat risiko tinggi";
-  } else if (score < 61) {
-    color = "#F2C8AD";
-    risiko = "Tingkat risiko sedang";
-  } else if (score < 81) {
-    color = "#D1E1B7";
-    risiko = "Tingkat risiko rendah";
-  } else if (score <= 100) {
-    color = "#9FDAC4";
-    risiko = "Tingkat risiko sangat rendah ";
+  function handleFinish() {
+    sessionStorage.removeItem(STORAGE_KEYS.SCORE);
+    sessionStorage.removeItem(STORAGE_KEYS.COMPLETED_SURVEY);
+    sessionStorage.removeItem(STORAGE_KEYS.SURVEY_DATA);
+    router.push("/rekomendasi");
   }
 
-  function deleteSurveyState() {
-    sessionStorage.removeItem("score");
-    sessionStorage.removeItem("completed-survey");
-    sessionStorage.removeItem("my-survey");
-    router.push("rekomendasi");
-
-
-    
-    // const scoreItem = "score";
-    // const stateScore = window.sessionStorage.getItem(scoreItem);
-    // const currentSurvey = JSON.parse(stateScore);
-    // console.log("Cure survey:")
-    // console.log(currentSurvey)
-    // let data_csv = {
-    //   email: "asd@asd.asd",
-    //   // perangkat: currentSurvey.titleperangkat,
-    //   identitas: "",
-    //   currentSurvey,
-    // };
-
-    // fetch("/api/sendmail", {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json, text/plain, */*",
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data_csv),
-    // }).then((res) => {
-    //   console.log("Response received");
-    //   if (res.status === 200) {
-    //     console.log("Response succeeded!");
-    //   }
-    // });
-  }
-
-  function handleClick() {
-    setMulai(true);
-  }
-
-  return mulai ? (
-    <SurveyComponent />
-  ) : (
-    <>
-      <div className="flex content-center justify-center text-[#253C5B]">
-        <div className="container pt-10 2xl:pt-44 xl:px-48 max-w-8xl relative mx-auto">
-          <div className="items-center flex flex-wrap mx-auto flex-col">
-            <div className="mb-4 px-4">
-              <h1 className="text-4xl md:text-5xl font-bold mb-3 ">
-                Level <span className="aksen">Risiko</span> Anda
-              </h1>
+  return (
+    <div className="flex content-center justify-center text-[#253C5B]">
+      <div className="container pt-10 2xl:pt-44 xl:px-48 max-w-8xl relative mx-auto">
+        <div className="items-center flex flex-wrap mx-auto flex-col">
+          <div className="mb-4 px-4">
+            <h1 className="text-4xl md:text-5xl font-bold mb-3">
+              {t.results.headingPrefix}{t.results.headingPrefix === "Your" ? " " : " "}
+              <span className="aksen">{t.results.headingAccent}</span>
+              {t.results.headingSuffix && ` ${t.results.headingSuffix}`}
+            </h1>
+          </div>
+          <div className="w-full grid grid-flow-row grid-cols-2 sm:grid-cols-5 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-gray-100 gap-x-0 gap-y-2 justify-items-center z-10 text-center">
+            {RISK_RANGES.map((level, index) => (
+              <div key={level.range}>
+                <div
+                  className="justify-self-center content-center relative h-12 w-24 overflow-hidden rounded-lg text-lg"
+                  style={{ backgroundColor: level.color }}
+                >
+                  <span className="relative">{level.range}</span>
+                </div>
+                <span className="relative">{t.results.riskLevels[index]}</span>
+              </div>
+            ))}
+          </div>
+          <div className="relative pt-5 md:pt-10 pb-5 mx-auto px-4 md:px-0">
+            <div className="p-4 mb-5 bg-[#eef5ff] border border-[#a9c7e8] rounded-lg">
+              <h3 className="mt-0 mb-1 font-semibold">{t.results.combinedScore}</h3>
+              <p className="text-3xl font-bold m-0 text-[#0d47a1]">{combinedScore}</p>
             </div>
-            {/* <h3 className="px-4 mb-3 text-2xl font-semibold">
-              Tingkat kerentanan
-            </h3> */}
-            <div className=" w-full grid grid-flow-row sm:grid-flow-row grid-cols-2 sm:grid-cols-5 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-gray-100 gap-x-0 gap-y-2 justify-items-center z-10 text-center">
-              <div>
-                <div className="justify-self-center content-center relative h-12 w-24 overflow-hidden rounded-lg bg-[#F2848C]  text-lg ">
-                  <span className="relative">1-20</span>
+            <div className="flex flex-wrap gap-2.5 justify-center px-2.5">
+              {scoreData.map((item) => (
+                <div
+                  key={item.title}
+                  className="border border-gray-300 rounded-lg p-4 flex-1 min-w-[200px] max-w-[300px]"
+                >
+                  <h2 className="mt-0 capitalize text-lg">
+                    {categories[item.title]?.label || item.title}
+                  </h2>
+                  <p className="text-2xl font-bold m-0">
+                    {t.results.score}: {Math.round(item.score)}
+                  </p>
                 </div>
-                <span className="relative">Tingkat risiko sangat tinggi</span>
-              </div>
-              <div>
-                <div className="justify-self-center content-center relative h-12 w-24 overflow-hidden rounded-lg bg-[#F2A19D] text-lg ">
-                  <span className="relative">21-40</span>
-                </div>
-                <span className="relative">Tingkat risiko tinggi</span>
-              </div>
-              <div>
-                <div className="justify-self-center content-center relative h-12 w-24 overflow-hidden rounded-lg bg-[#F2C8AD] text-lg ">
-                  <span className="relative">41-60</span>
-                </div>
-                <span className="relative">Tingkat risiko sedang</span>
-              </div>
-              <div>
-                <div className="justify-self-center content-center relative h-12 w-24 overflow-hidden rounded-lg  bg-[#D1E1B7] text-lg ">
-                  <span className="relative">61-80</span>
-                </div>
-                <span className="relative">Tingkat risiko rendah</span>
-              </div>
-              <div>
-                <div className="justify-self-center content-center relative h-12 w-24 overflow-hidden rounded-lg  bg-[#9FDAC4] text-lg ">
-                  <span className="relative">81-100</span>
-                </div>
-                <span className="relative">Tingkat risiko sangat rendah</span>
-              </div>
+              ))}
             </div>
-            {/* <div className="relative pt-10 md:pt-24 mx-auto">
-              <div className="absolute inset-0 z-10 text-center flex flex-col items-center justify-center mt-10">
-                <span className="text-4xl font-black">{nilai}%</span>
-              </div>
-              <div href="#" className="relative">
-                <div className="h-48 flex flex-wrap content-center">
-                  <SvgComponent fill={color} />
-                </div>
-              </div>
-            </div>
-            <div
-              className={
-                "mt-10 m-5 p-2 rounded-lg text-center " + "bg-[" + color + "]"
-              }
-                
+          </div>
+          <div className="pb-8 flex flex-wrap justify-center">
+            <button
+              onClick={handleDownloadPdf}
+              disabled={pdfLoading}
+              className="relative h-12 w-48 mt-4 mx-2 overflow-hidden rounded-lg bg-[#253C5B] hover:bg-[#1a2d45] disabled:opacity-60 text-lg shadow"
             >
-              <span className="relative">{risiko}</span>
-            </div> */}
-             <div className="relative pt-5 md:pt-10 pb-5 mx-auto px-4 md:px-0">
-            <div 
-        style={{ 
-          padding: '16px', 
-          marginBottom: '20px', 
-          backgroundColor: '#eef5ff', 
-          border: '1px solid #a9c7e8', 
-          borderRadius: '8px' 
-        }}
-      >
-        <h3 style={{ marginTop: 0, marginBottom: '4px' }}>Total Skor Gabungan</h3>
-        <p style={{ fontSize: '1.8rem', fontWeight: 'bold', margin: 0, color: '#0d47a1' }}>
-          {Math.round((totalScore / 50) * 100)}
-        </p>
-      </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center', padding: '0 10px' }}>
-            {scoreData.map((item) => (
-        <div 
-          key={item.title} 
-          style={{ 
-            border: '1px solid #ccc', 
-            borderRadius: '8px', 
-            padding: '16px', 
-            flex: '1 1 200px',
-            minWidth: '200px',
-            maxWidth: '300px'
-          }}
-        >
-          <h2 style={{ marginTop: 0, textTransform: 'capitalize', fontSize: '1.1rem' }}>
-            {item.title}
-          </h2>
-          <p style={{ fontSize: '1.5rem', fontWeight: 'bold', margin: 0 }}>
-            Skor: {Math.round(item.score)}
-          </p>
-        </div>
-      ))}
-            </div>
-            </div>
-            <div className="pb-8">
-              <Link href="rekomendasi">
-              <button
-                onClick={() => deleteSurveyState()}
-                // email
-                // disabled={checked}
-                // onClick={
-                //   checked ? () => handleClick() : () => deleteSurveyState()
-                // }
-                className="relative h-12 w-36 mt-4 mx-2 overflow-hidden rounded-lg bg-[#A91F24] hover:bg-red-500 text-lg shadow self-center lg:self-center"
-              >
-                {/* <span className="relative text-white ">
-                  {checked ? "Isi Data" : "Selesai"}
-                </span> */}
-                <span className="relative text-white ">
-                  Selesai
-                </span>
+              <span className="relative text-white">
+                {pdfLoading ? t.results.downloading : t.results.downloadPdf}
+              </span>
+            </button>
+            <button
+              onClick={handleFinish}
+              className="relative h-12 w-36 mt-4 mx-2 overflow-hidden rounded-lg bg-[#A91F24] hover:bg-red-500 text-lg shadow"
+            >
+              <span className="relative text-white">{t.results.finish}</span>
+            </button>
+            <Link href="/pemeriksaan-lanjutan">
+              <button className="relative h-12 w-36 mt-4 mx-2 overflow-hidden rounded-lg bg-[#A91F24] hover:bg-red-500 text-lg shadow">
+                <span className="relative text-white">{t.results.continue}</span>
               </button>
-              </Link>
-              <Link href="pemeriksaan-lanjutan">
-                <button className="relative h-12 w-36 mt-4 mx-2 overflow-hidden rounded-lg bg-[#A91F24] hover:bg-red-500 text-lg shadow self-center lg:self-center">
-                  <span className="relative text-white ">Lanjutkan</span>
-                </button>
-              </Link>
-            </div>
+            </Link>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
-};
-
-export default HasilComponent;
+}
