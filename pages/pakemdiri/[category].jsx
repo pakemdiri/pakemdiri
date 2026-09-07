@@ -1,10 +1,13 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import {
   CATEGORY_ROUTE_SLUGS,
   getCategoryKeyBySlug,
+  STORAGE_KEYS,
 } from "../../lib/constants";
+import { useSessionStorageJSON } from "../../lib/hooks";
 import { LOCALES } from "../../lib/i18n";
 
 const SurveyComponent = dynamic(() => import("../../components/survey"), {
@@ -13,12 +16,31 @@ const SurveyComponent = dynamic(() => import("../../components/survey"), {
 
 export default function PakemdiriCategory() {
   const router = useRouter();
+  const assessment = useSessionStorageJSON(STORAGE_KEYS.INITIAL_ASSESSMENT);
+  const canAccessFullAssessment = assessment?.mode === "full";
   const slug = Array.isArray(router.query.category)
     ? router.query.category[0]
     : router.query.category;
   const categoryKey = getCategoryKeyBySlug(slug);
 
-  if (!router.isReady || !categoryKey) return null;
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    try {
+      const saved = JSON.parse(
+        sessionStorage.getItem(STORAGE_KEYS.INITIAL_ASSESSMENT) || "null"
+      );
+      if (saved?.mode === "full") {
+        return;
+      }
+    } catch {
+      /* ignore corrupt data */
+    }
+
+    router.replace("/pakemdiri", undefined, { locale: router.locale });
+  }, [router, canAccessFullAssessment]);
+
+  if (!router.isReady || !canAccessFullAssessment || !categoryKey) return null;
   const backLabel =
     router.locale === "en"
       ? "Back to security section selection"
