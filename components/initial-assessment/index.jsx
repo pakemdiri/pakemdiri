@@ -46,6 +46,7 @@ export default function InitialAssessment({ onComplete }) {
             {INITIAL_ASSESSMENT_QUESTIONS.map((question, questionIndex) => {
               const copy = t.assessment.questions[question.name];
               const hasError = attempted && !answers[question.name];
+              const questionTitleId = `assessment-${question.name}-title`;
               const errorId = `assessment-${question.name}-error`;
 
               return (
@@ -53,14 +54,15 @@ export default function InitialAssessment({ onComplete }) {
                   key={question.name}
                   id={`assessment-${question.name}`}
                   tabIndex={-1}
+                  aria-labelledby={questionTitleId}
                   aria-describedby={hasError ? errorId : undefined}
                   aria-invalid={hasError}
                   aria-required="true"
-                  className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm md:p-6"
+                  className="min-w-0 rounded-lg border border-gray-200 bg-white p-4 shadow-sm md:p-6"
                 >
-                  <legend className="max-w-full px-1 text-lg font-semibold leading-snug md:text-xl">
+                  <div id={questionTitleId} className="mb-0 text-left text-lg font-semibold leading-snug md:text-xl">
                     {questionIndex + 1}. {copy.title}
-                  </legend>
+                  </div>
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
                     {question.options.map((option) => {
                       const inputId = `${question.name}-${option.value}`;
