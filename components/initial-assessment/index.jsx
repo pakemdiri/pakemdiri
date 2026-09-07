@@ -108,7 +108,7 @@ export default function InitialAssessment({ onComplete }) {
 
             <button
               type="submit"
-              className="inline-flex h-12 items-center justify-center rounded-lg bg-[#A91F24] px-6 py-3 text-lg leading-6 text-white shadow hover:bg-[#8A191D]"
+              className="mb-8 inline-flex h-12 items-center justify-center rounded-lg bg-[#A91F24] px-6 py-3 text-lg leading-6 text-white shadow hover:bg-[#8A191D]"
             >
               {t.assessment.submit}
             </button>

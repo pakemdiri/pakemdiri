@@ -45,7 +45,7 @@ function SimpleGuide({ assessment, onReset }) {
             <button
               type="button"
               onClick={onReset}
-              className="mt-8 h-12 rounded-lg bg-[#253C5B] px-6 text-lg text-white shadow hover:bg-[#1a2d45]"
+              className="mt-4 inline-flex h-12 items-center justify-center rounded-lg bg-[#253C5B] px-6 py-3 text-lg leading-6 text-white shadow hover:bg-[#1a2d45]"
             >
               {t.assessment.reset}
             </button>
@@ -102,7 +102,7 @@ function FullGuide({ assessment, onReset }) {
             <button
               type="button"
               onClick={onReset}
-              className="mt-4 h-12 rounded-lg bg-[#253C5B] px-6 text-lg text-white shadow hover:bg-[#1a2d45]"
+              className="mt-4 inline-flex h-12 items-center justify-center rounded-lg bg-[#253C5B] px-6 py-3 text-lg leading-6 text-white shadow hover:bg-[#1a2d45]"
             >
               {t.assessment.reset}
             </button>
